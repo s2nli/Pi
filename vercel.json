@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "functions": { "api/**/*.js": { "maxDuration": 60 } },
+  "rewrites": [
+    { "source": "/api/proxy/:path*", "destination": "/api/proxy?__p=/api/proxy/:path*" },
+    { "source": "/api/hls/:path*", "destination": "/api/proxy?__p=/api/hls/:path*" },
+    { "source": "/api/media/:path*", "destination": "/api/proxy?__p=/api/media/:path*" },
+    { "source": "/api/seg/:path*", "destination": "/api/proxy?__p=/api/seg/:path*" }
+  ]
 }
